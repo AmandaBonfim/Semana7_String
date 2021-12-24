@@ -1,0 +1,40 @@
+const textopadrao = 'Text';
+
+function iniciar() {
+  nomeItem = textopadrao;
+  numItens = 3;
+  createList (numItens, nomeItem);
+}
+
+function createList (numItens, nomeItem) {
+  let idlista = document.getElementById('lista');
+  if (nomeItem == '') {
+    nomeItem = textopadrao;
+  }
+  if (numItens == ' ') { 
+    numItens = 3;
+  }
+  for(var i = 0; i < numItens; i++){
+        let mensagem = document.createElement('li');
+        mensagem.appendChild(document.createTextNode(nomeItem + " "+ (i+1)));
+        idlista.appendChild(mensagem);
+  }
+ 
+}
+
+function clean(){
+  document.getElementById('lista').innerHTML = "";
+}
+
+
+function alteraLista() {
+  
+  let numItens = document.getElementById('numitens').value;
+  numItens = parseInt(numItens);
+  let nomeItem = document.getElementById('nomeitem').value;
+  clean();
+  createList(numItens,nomeItem); 
+
+  document.getElementById('numitens').value = '';
+  document.getElementById('nomeitem').value = '';
+}
